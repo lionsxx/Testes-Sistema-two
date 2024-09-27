@@ -1,0 +1,566 @@
+.Rodapé { 
+    position: fixed;
+    bottom: 0;
+    background-color: #C7C7C7;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 45px;
+    left: 0;
+    line-height: 40px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+}
+
+/* Barra superior */
+.barraE { 
+    background-color: #C7C7C7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    z-index: 1000; 
+}
+
+/* Barra lateral esquerda */
+.barraL { 
+    position: fixed;
+    top: 45px; 
+    left: 0;
+    width: 20%; /* Uso de porcentagem para ajustar dinamicamente */
+    height: calc(100% - 45px); /* Altura ajustada para não sobrepor o rodapé e barra superior */
+    background-color: #C7C7C7;
+    padding-top: 20px;
+    color: white;
+}
+
+/* Barra abaixo da barra lateral */
+.barra { 
+    position: fixed;
+    top: 140px; 
+    left: 0;
+    width: 18%; 
+    height: 90%; 
+    background-color: #ffffff;
+    padding-top: 20px;
+    color: white;
+}
+
+.barrinha{
+    position: fixed;
+    left: 5;
+    width: 50px; 
+    height: 26%; 
+    background-color: #2E4787;
+     
+    top: 505px;
+    color: white;
+}
+.linha {
+    z-index: 2000;
+    border: 1px solid #333;    
+    box-sizing: border-box;
+    width: 75%;                  
+    margin: 288px 0px 0px 25px;
+              
+}
+.hoje{
+    position: fixed;
+    z-index: 1000;
+    margin: 20px;
+    top: 420px;
+    
+}
+@media (max-width: 1024px) {
+    .barraL, .barra { 
+        width: 30%; /* Ajuste a largura conforme necessário */
+    }
+    .componentesAdd {
+        flex-direction: column; /* Alterar para coluna em telas menores */
+    }
+}
+
+@media (max-width: 768px) {
+    .barraL, .barra { 
+        width: 40%; /* Ajuste a largura conforme necessário */
+    }
+    .componentesAdd {
+        width: 100%; /* Ajuste de largura */
+    }
+}
+
+.hoje h3{
+    font-family: "Kanit", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.titulo{
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    font-style: normal; 
+    margin: 10px auto 0 20px;
+    color: #2E4787;
+    font-size: 25px;
+    
+}
+/*Componentes adicionar*/
+.componentesAdd {
+    display: flex;
+    position: fixed;
+    z-index: 900;
+    top: 200px; 
+    left: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#resultado {
+    margin-top: -340px;
+    z-index: 1000;
+    max-height: 185px; 
+    overflow-y: auto;
+    direction: ltr;
+}
+
+.novaDiv {
+    position: relative;
+    padding-left: 40px; 
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: "Kanit", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bolinha {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.addevents{        /*button de add componentes*/
+    border: none;
+    background-color: transparent;
+    width: 19px;
+    height: auto;
+}
+.addevents img{    
+    height: auto;
+    width: 15px;
+    all: unset;
+    outline: invert;
+    cursor: pointer;
+   transition: transform 0.3s ease, opacity 0.3s ease; 
+   height: auto;
+}
+.addevents img:hover{
+    transform: scale(1.2); 
+    opacity: 0.9; 
+}
+.titleevents{
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+.dropdownButton{
+    position: fixed;
+    top: 10px;
+    left: 1200px;
+    background: none;
+    border: none;
+    padding: none;
+    z-index: 10000;
+   
+}
+.dropdownButton img{
+    height: auto;
+    width: 25px;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Adiciona a animação de transformação e opacidade */
+}
+/* Animação ao passar o mouse */
+.dropdownButton img:hover {
+    transform: scale(1.2); 
+    opacity: 0.9; 
+}
+
+/* Animação ao clicar */
+.dropdownButton:active img {
+    transform: scale(0.9); 
+    opacity: 0.7;
+}
+
+/* Estilo geral do contêiner */
+.notificacao-container {
+    position: fixed;
+    top: 20px;
+    left: 980px;
+    width: 250px;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 10px;
+    z-index: 2000;
+}
+
+/* Estilo do cabeçalho */
+.notificacao-header {
+    background-color: #2e4a8d;
+    padding: 10px;
+    text-align: left;
+    color: #ffffff; 
+}
+
+.notificacao-header h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Estilo do corpo */
+.notificacao-body {
+    padding: 15px;
+    text-align: left;
+}
+
+.notificacao-label {
+    border: 1px solid #555;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    
+}
+
+/* Estilo do rodapé */
+.notificacao-footer {
+    color: #D9D9D9;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.btn-excluir {
+    background-color: #2e4a8d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background-color: #1e3570;
+}
+.dropdownElements{
+    position: fixed;
+    background-color: white;
+    width: 200px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    top: 250px;
+    left: 150px;
+    height: 190px;
+    z-index: 100;
+}
+.elementos-header{
+    background-color: #2e4a8d;
+    padding: 10px;
+    text-align: left;
+    color: #ffffff; 
+}
+.elementos-header h2 {
+    font-size: 16px;
+    margin: 0;
+}
+.elementos-body{
+    padding: 15px;
+    text-align: left;
+}
+#bolinha{
+    border-radius: 100%;
+}
+.btn-salvar-elementos {
+    background-color: #2e4a8d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.btn-salvar-elementos:hover{
+    background-color: #1e3570;
+}
+.form-input{
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    transition: all 0.3s;
+    border-radius: 3px;
+    margin: 0;
+    width: 150px;
+ 
+}
+
+  .form_name {
+    font-family: 'Roboto', sans-serif;
+    
+  }
+  .fc-header-toolbar {
+    
+    top: 0;
+    background-color:transparent; 
+    z-index: 1000;            
+    padding: 5px;       
+    width: 100%;
+    color: #2E4787;
+}
+/* Defina um tamanho máximo para o contêiner do calendário */
+#calendar {
+    width: 80%;  
+    height: 500px;  
+    margin: 100px auto 0 310px;
+}
+
+
+.fc .fc-daygrid-day-frame {
+    height: 80px; 
+}
+
+.fc-event-title {
+    font-size: 0.8rem; 
+}
+
+
+.fc-toolbar h2 {
+    font-size: 1.2rem; 
+    color: #2E4787;
+    font-family: "Imprima", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.fc-toolbar button {
+    padding: 5px 10px;  
+    font-size: 0.9rem;  
+}
+
+/* Ajusta o espaçamento entre os eventos */
+.fc-event {
+    margin: 1px 0;  
+}
+.fc-toolbar {
+    margin-top: -104px;    
+    margin-left: -20px;   
+    margin-right: 400px;  
+}
+
+/*button de adicionar eventos no calendario*/
+.botaoeventos{
+    position: fixed;
+    top: 10px;
+    left: 490px;
+    background: none;
+    border: none;
+    padding: none;
+    z-index: 10000;
+}
+.botaoeventos img{
+    height: auto;
+    width: 25px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.botaoeventos img:hover{
+    transform: scale(1.2); 
+    opacity: 0.9; 
+}
+.botaoeventos:active img {
+    transform: scale(0.9); 
+    opacity: 0.7;
+}
+/*caixa de adicionar eventos no calendario*/
+
+#criarEventoss{
+    position: fixed;
+    top: 20px;
+    left: 380px;
+    width: 250px;
+    height: 290px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 10px;
+    z-index: 2000;
+}
+.titleEventos{
+    background-color: #2e4a8d;
+    padding: 10px;
+    text-align: left;
+    color: #ffffff; 
+}
+.titleEventos h3{
+    font-size: 16px;
+    margin: 0;
+}
+input[type="text"], input[type="date"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #2e4a8d;
+    outline: none;
+}
+.addeventosbutton {
+    background-color: #2e4a8d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.addeventosbutton:hover {
+    background-color: #4c68aa;
+}
+
+/* painel de configurações*/
+#button-configs{
+    position: fixed;
+    top: 10px;
+    left: 1250px;
+    background: none;
+    border: none;
+    padding: none;
+    z-index: 10000;
+}
+#button-configs img{
+    height: auto;
+    width: 25px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#button-configs img:hover {
+    transform: scale(1.2); 
+    opacity: 0.9; 
+}
+#button-configs:active img {
+    transform: scale(0.9); 
+    opacity: 0.7;
+}
+/* Estilização do container principal */
+.dropdown-container {
+    display: none;
+    width: 300px;
+    margin: -200px 1200px;
+    top: 10px;
+    background-color: #1d3461;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: #fff;
+    border-radius: 5px;
+    position: relative;
+    z-index: 10000;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.dropdown-container.show {
+    display: block; /* Mostra o painel */
+    transform: translateY(0); /* Reseta o deslocamento */
+    opacity: 1; /* Torna visível */
+}
+
+/* Estilização da imagem (se for adicionada) */
+.imagemAF {
+    width: 100px;
+    height: 100px;
+    background-image: url('caminho/para/imagem.jpg'); /* Caminho da imagem */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%; /* Tornar a imagem circular */
+    margin: 0 auto 10px auto; /* Centralizar a imagem e adicionar espaçamento inferior */
+}
+
+/* Título do nome da franquia */
+#nome-franquia {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #f2f2f2;
+}
+
+/* Estilização do menu de configurações */
+#configs-menu h2 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #f2f2f2;
+}
+
+#configs-menu label {
+    font-size: 0.9em;
+    color: #f2f2f2;
+    display: block; /* Força o label a ocupar a linha inteira */
+    margin-bottom: 5px;
+}
+
+#configs-menu input[type="color"] {
+    width: 15%; /* Alinha o input com o label */
+    height: 40px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Espaçamento entre inputs */
+}
+
+/* Botão de aplicar */
+#configs-menu button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #f39c12; /* Cor do botão */
+    color: #fff;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#configs-menu button:hover {
+    background-color: #e67e22; /* Cor do botão ao passar o mouse */
+}
+
+/* Animação ao mostrar o painel */
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo para transição ao aparecer */
+.dropdown-container.show {
+    animation: slideDown 0.3s ease;
+}
+
+.lembretes{
+    position: relative;
+}

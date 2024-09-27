@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/Css/Calendar.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.css" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script src="/js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/main.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <div class="barraE" id="barraE"></div>
+    <article class="barraL" id="barraL"></article>
+    <article class="barra" id="barra"><hr class="linha"></article>
+
+    <!-- Botão de Notificações -->
+    <button type="submit" id="showdropdownButton" class="dropdownButton">
+        <img src="/imgs/sino (1).png" alt="sla">
+    </button>
+
+    <!-- Caixa de Notificações -->
+    <div class="notificacao-container" id="notificacao-container" style="display: none;">
+        <div class="notificacao-header">
+            <h2>Suas notificações</h2>
+        </div>
+        <div class="notificacao-body">
+            <input type="checkbox" id="notificacao1">
+            <label for="notificacao1" class="notificacao-label">Bem-Vindo ao sistema</label>
+        </div>
+        <div class="notificacao-footer">
+            <button class="btn-excluir">Excluir</button>
+        </div>
+    </div>
+
+    <!-- Calendário -->
+    <div id='calendar'></div>
+
+    <!-- Componente de Adicionar Eventos -->
+    <div id="componentesAdd" class="componentesAdd">
+        <h3 class="titleevents">Componentes</h3>
+        <button type="submit" id="addevents" class="addevents">
+            <img src="/imgs/plus.png" alt="notificacao" style="height: 20px;">
+        </button>
+        <div id="caixaevents"></div>
+    </div>
+
+    <!-- Dropdown para Elementos -->
+    <div class="dropdownElements" id="dropdownElements" style="display: none;">
+        <div class="elementos-header">
+            <h2>Elementos</h2>
+        </div>
+        <div class="elementos-body">
+            <label for="name" class="input_name">Nome:</label>
+            <input type="text" id="name" name="name" class="form-input"><br>
+            <label for="Cor">Escolha a cor:</label><br>
+            <input type="color" name="Cor" id="Cor">
+        </div>
+        <button class="btn-salvar-elementos" id="btnSalvar">Salvar</button>
+    </div>
+
+    <!-- Resultado -->
+    <div id="resultado"></div>
+
+    <!-- Seção para Eventos de Hoje -->
+    <div class="hoje">
+        <h3>Para hoje</h3>
+    </div>
+    <article class="barrinha"></article>
+
+    <!-- Botão para Mostrar Caixa de Adicionar Eventos -->
+    <button type="submit" id="buttoneventos" class="botaoeventos">
+        <img src="/imgs/calendario-linhas-caneta (2).png" alt="buttonEventos">
+    </button>
+
+    <!-- Formulário para Adicionar Eventos ao Calendário -->
+    <div id="criarEventoss" style="display: none;">
+        <div class="titleEventos">
+            <h3>Adicionar Eventos</h3>
+        </div>
+        <form id="eventForm">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title">
+            <label for="start">Data de Início:</label>
+            <input type="date" id="start" name="start">
+            <label for="end">Data de Término:</label>
+            <input type="date" id="end" name="end"><br><br>
+            <button class="addeventosbutton">Adicionar Evento</button>
+        </form>
+    </div>
+
+    <button id="button-configs" ><img src="/imgs/definicoes (2).png" alt="configs"></button>
+
+    <!-- Dropdown de configurações -->
+<div class="dropdown-container" id="dropdown-container">
+    <div class="imagemAF"></div>
+    <h3 id="nome-franquia">Afinato Santo Cristo</h3>
+
+    <div id="configs-menu">
+       
+
+        <label for="system-color">Cor do Sistema:</label><br>
+        <input type="color" id="system-color" name="system-color" value="#3498db">
+        <br><br>
+
+        <label for="login-panel-color">Cor do Painel de Login:</label><br>
+        <input type="color" id="login-panel-color" name="login-panel-color" value="#2c3e50">
+        <br><br>
+
+        <label for="additional-color">Cor secundária:</label><br>
+        <input type="color" id="additional-color" name="additional-color" value="#3498db">
+        <br><br>
+
+        <button onclick="applyChanges()">Aplicar</button>
+    </div>
+</div>
+
+  
+
+
+
+    <!-- Rodapé -->
+    <div class="Rodapé">
+        <h3 class="titulo">AFINATO</h3>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Alternar exibição da caixa de notificações
+        document.getElementById("showdropdownButton").addEventListener("click", function() {
+            var notificacao = document.getElementById("notificacao-container");
+            notificacao.style.display = (notificacao.style.display === "none") ? "block" : "none";
+        });
+
+        // Inicializar o calendário
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                editable: true,
+                droppable: true,
+                locale: 'pt-br',
+                events: [],
+                eventDrop: function(info) {
+                    alert(info.event.title + " foi movido para " + info.event.start.toISOString());
+                },
+                eventResize: function(info) {
+                    alert(info.event.title + " foi redimensionado para terminar em " + info.event.end.toISOString());
+                }
+            });
+
+            calendar.render();
+
+            // Adicionar eventos ao calendário
+            document.getElementById('eventForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var title = document.getElementById('title').value;
+                var start = document.getElementById('start').value;
+                var end = document.getElementById('end').value;
+
+                if (title && start) {
+                    calendar.addEvent({
+                        title: title,
+                        start: start,
+                        end: end,
+                        allDay: true
+                    });
+                }
+
+                // Limpar campos do formulário
+                document.getElementById('title').value = '';
+                document.getElementById('start').value = '';
+                document.getElementById('end').value = '';
+            });
+        });
+
+        
+
+        // Alternar exibição do dropdown de adicionar eventos
+        document.getElementById("addevents").addEventListener("click", function() {
+            var dropdownElements = document.getElementById("dropdownElements");
+            dropdownElements.style.display = (dropdownElements.style.display === "none") ? "block" : "none";
+        });
+
+        // Salvar novo elemento
+        document.getElementById('btnSalvar').addEventListener('click', function() {
+            var nome = document.getElementById('name').value;
+            var corEscolhida = document.getElementById('Cor').value;
+
+            if (nome.trim() !== '') {
+                var novaDiv = document.createElement('div');
+                novaDiv.classList.add('novaDiv');
+                novaDiv.innerHTML = nome;
+
+                var bolinha = document.createElement('div');
+                bolinha.classList.add('bolinha');
+                bolinha.style.backgroundColor = corEscolhida;
+                novaDiv.appendChild(bolinha);
+
+                document.getElementById('resultado').appendChild(novaDiv);
+
+                // Limpar campos do formulário
+                document.getElementById('name').value = '';
+                document.getElementById('Cor').value = '#000000';
+            }
+        });
+
+        // Alternar exibição da caixa de adicionar eventos
+        document.getElementById("buttoneventos").addEventListener("click", function() {
+            var caixaeventos = document.getElementById("criarEventoss");
+            caixaeventos.style.display = (caixaeventos.style.display === "none") ? "block" : "none";
+        });
+
+         // Alternar exibição das configurações
+         document.getElementById("button-configs").addEventListener("click", function() {
+            var caixaeventos = document.getElementById("dropdown-container");
+            caixaeventos.style.display = (caixaeventos.style.display === "none") ? "block" : "none";
+        });
+
+        //MUDAR CORES CONFIGS
+    function applyChanges() {
+        // Pega os valores das cores dos inputs
+        var systemColor = document.getElementById('system-color').value;
+        var PanelPrincipalColor = document.getElementById('system-color').value;
+        var additionalColor = document.getElementById('additional-color').value;
+        document.querySelector('.barraL').style.backgroundColor = PanelPrincipalColor; 
+        document.querySelector('.barraE').style.backgroundColor = PanelPrincipalColor; 
+        document.querySelector('.Rodapé').style.backgroundColor = PanelPrincipalColor; 
+
+        
+    }
+
+
+    </script>
+</body>
+</html>

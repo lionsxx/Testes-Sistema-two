@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="/Css/style.css">
+    
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-section">
+                <img src="/Css/LogoAfinato.png" alt="Afinato Logo" class="logo">
+                <h1>AFINATO</h1>
+            </div>
+            <div class="login-form">
+                <h2>FAÇA LOGIN</h2>
+                <form id="form">
+                    <div class="input-group">
+                        <label for="usuario">Usuário</label>
+                        <input type="text" id="usuario" name="usuario" placeholder="Usuário" class="input required">                       
+                    </div>
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Senha" class="input required">
+                        
+                    </div>
+                    <div class="input-group remember">
+                        <input type="checkbox" id="lembrar-senha" name="lembrar-senha">
+                        <label for="lembrar-senha">Lembrar senha</label>
+                    </div>
+                    <button type="submit" class="loginButton" id="buttonLogin" onchange="VerificaButtonLongin(this)">Entrar</button>  
+                    
+                    <p id="mensagemErro" style="display:none;" class="mensagemErro">Usuário ou senha inválidos.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+      document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne o envio do formulário
+
+    // Valores de exemplo para validação
+    const usuarioCorreto = 'Santo Cristo';
+    const senhaCorreta = '123456';
+
+    // Obter os valores dos inputs
+    var usuario = document.getElementById('usuario').value;
+    var senha = document.getElementById('senha').value;
+
+    // Mensagem de erro
+    var mensagemErro = document.getElementById('mensagemErro');
+
+    // Verificação das credenciais
+    if (usuario === usuarioCorreto && senha === senhaCorreta) {
+        mensagemErro.style.display = 'none'; // Esconde a mensagem de erro
+        // Redireciona para a página de destino após login bem-sucedido
+        window.location.href = 'principal.html'; // Altere 'pagina-principal.html' para a URL desejada
+    } else {
+        mensagemErro.style.display = 'block'; // Mostra a mensagem de erro
+    }
+});
+
+
+    </script>
+    
+</body>
+</html>
